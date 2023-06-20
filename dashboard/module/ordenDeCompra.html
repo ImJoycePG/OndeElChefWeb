@@ -218,7 +218,6 @@
                 document.getElementById('producto').innerHTML = data;
             });
         document.getElementById('generarInformeBtn').addEventListener('click', function () {
-            // Obtener los datos de la tabla y convertirlos a formato JSON
             var table = document.getElementById("dataTable");
             var data = [];
             for (var i = 1; i < table.rows.length; i++) {
@@ -230,7 +229,6 @@
                 data.push(rowData);
             }
 
-            // Enviar los datos al script PHP para generar el PDF
             fetch('../../includes/dashboard/downloadPDF/ordenDeCompra.php', {
                 method: 'POST',
                 headers: {
@@ -240,7 +238,6 @@
             })
                 .then(response => response.blob())
                 .then(blob => {
-                    // Crear el enlace de descarga y comenzar la descarga del PDF
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
