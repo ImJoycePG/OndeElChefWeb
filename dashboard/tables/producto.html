@@ -88,6 +88,7 @@
                         <a class="collapse-item" href="../module/ordenDeCompra.html">Orden de Compra</a>
                         <a class="collapse-item" href="../module/productosSemanales.html">Productos Semanales</a>
                         <a class="collapse-item" href="../module/verificacionProductos.html">Verificación de Productos</a>
+                        <a class="collapse-item" href="../module/propuestasProductos.html">Propuestas y Presupuestos</a>
                     </div>
                 </div>
             </li>
@@ -120,6 +121,10 @@
                             </div>
                         </div>
 
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end"
+                            style="margin-top: 10px; margin-right: 20px">
+                            <button id="generarInformeBtn" type="button" class="btn btn-success">Generar Informe</button>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -166,6 +171,22 @@
           .then(data => {
             document.getElementById('dataRow').innerHTML = data;
         });
+        document.getElementById('generarInformeBtn').addEventListener('click', function () {
+            fetch('../../includes/dashboard/downloadPDF/productPDF.php')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'informe_productos.pdf';
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    a.remove();
+                })
+                .catch(error => {
+                    console.error('Error al generar el informe:', error);
+                });
+        }); 
 
         document.getElementById('filtroTabla').addEventListener('input', function () {
                 var filtro = this.value.toLowerCase();
