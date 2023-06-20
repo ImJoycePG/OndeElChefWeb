@@ -2,7 +2,7 @@
 
 <p align="left"> <a href="https://twitter.com/imjoycepg" target="blank"><img src="https://img.shields.io/twitter/follow/imjoycepg?color=red&style=for-the-badge" alt="imjoycepg" /></a> </p>
 
-<h2 align="left">Collab:</h2>
+<h2 align="left">Contributors:</h2>
 
 - ImJoycePG
 - YisusCode06
